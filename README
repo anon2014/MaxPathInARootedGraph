@@ -1,0 +1,62 @@
+
+Solution to problem described in ProgrammingQuestion_v1.docx file.
+------------------------------------------------------------------
+
+--> Objective: Given Node Structure (graph), find the maximum 
+    path length from the root node, and identify loops, if any.
+    
+--> Overall Solution/Algorithm
+The solution to this problem involves a depth-first search based 
+algorithm to traverse the given graph starting from the root node. 
+From the given root node, all paths are explored (in depth-first order), 
+and an auxiliary structure pathList (ArrayList<ArrayList<Node>> pathList) 
+is maintained to mark nodes based on their distance from the root node. 
+When all the paths starting from root node have been traversed, 
+the maximum path length is obtained from the pathList and the node at that distance.
+A list of nodes visited on a given path is also maintained to detect loops. 
+If a node on a path is already present in the list of visited nodes on that path 
+then a loop is identified. 
+
+--> CODE (implementation is in Java and is present at path NodeProject/src )
+  (I) Java source files 
+     (1) Node.java (Defining a node with a string label and a list of children nodes, 
+     				and methods to add a child node to a node, 
+     				get label and children of a node. 
+     (2) PathFinder.java (Contains the methods implementing the algorithm to traverse 
+     					the graph and find max path length from root node)
+     (3) GenerateGraph.java (used to generate a graph of nodes from a given 
+     						adjacency list representation of node labels)
+  (II) JUnit Test files
+      - NodeTest.java (contains JUnit tests to verify the program on sample input graphs)
+
+--> Answer to Question 1:
+The method "int findMaxPathLength(Node root)" in PathFinder.java returns the 
+maximum path length from the root node to the most distant node. 
+It also prints one of the most distant nodes at the maximum path length from the root.
+This method implements the algorithm specified above.
+
+--> Answer to Question 2:
+The function is correct, i.e. returns correct result and terminates on all inputs, and 
+runs in linear time and space in the size of the input graph.
+The goodness of the function can be quantified by its complexity analysis, in terms 
+of time and space needed to execute this solution. 
+Main concerns in deciding if the solution is acceptable are as follows:
+(1) Correctness: the solution returns correct result and terminates on all inputs.
+(2) Error/Exception Handling: the solution should handle error cases and exceptions
+(3) Efficiency: The solution should be space- and time- efficient.
+(4) The solution is properly tested using test cases. 
+
+Complexity Analysis for the method "findMaxPathLength(Node root)":
+- Time Complexity: linear in the size of the graph, to be precise O(V + E), 
+					where V is number of nodes, and E is the number of edges in the graph
+- Space Complexity: linear in the size of graph, overall O(V + E) space is used. 
+					- O(V) to store the visited vertices 
+					- O(V + E) to store nodes on respective positions based on their 
+					distance from root node
+					 
+					 
+--> Answer to Question 3:
+The method "int findMaxPathLength(Node root)" in PathFinder.java used in response 
+to Question 1 also detects loops in the graph. It indicates the presence of a loop 
+with its return value of max path length as -1.
+
